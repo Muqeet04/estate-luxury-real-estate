@@ -7,11 +7,15 @@ export function Reveal({
   delay = 0,
   className = "",
   direction = "up",
+  onMouseEnter,
+  onMouseLeave,
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
   direction?: "up" | "left" | "right";
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }) {
   const initial =
     direction === "up"
@@ -30,6 +34,8 @@ export function Reveal({
       viewport={{ once: true, margin: "-10% 0px" }}
       transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
     </motion.div>
